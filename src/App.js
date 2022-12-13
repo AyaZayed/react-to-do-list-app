@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Header from "./components/Header";
 import List from "./components/List";
-// import New from "./components/New";
+import New from "./components/New";
 
 function App() {
   const initialTodos = [
@@ -59,11 +59,57 @@ function App() {
 
   const [todos, setTodos] = useState(initialTodos);
 
+  function addTodo(inputTodo) {
+    const newTodo = {
+      id: todos.length + 1,
+      task: inputTodo,
+      complete: false,
+    };
+    setTodos([...todos, newTodo]);
+  }
+
+  const handleToggle = (id) => {
+    let mapped = todos.map((task) => {
+      return task.id === Number(id)
+        ? { ...task, complete: !task.complete }
+        : { ...task };
+    });
+    setTodos(mapped);
+  };
+
+  function handleFilter(value) {
+    if (value === "active") {
+      let filtered = todos.filter((todo) => {
+        return todo.complete === false;
+      });
+      setTodos(filtered);
+    } else if (value === "completed") {
+      let filtered = todos.filter((todo) => {
+        return todo.complete === true;
+      });
+      setTodos(filtered);
+    } else {
+      setTodos(initialTodos);
+    }
+  }
+
+  function handleDelete() {
+    let filtered = todos.filter((todo) => {
+      return todo.complete === false;
+    });
+    setTodos(filtered);
+  }
+
   return (
     <div className="App">
       <Header />
-      {/* <New todos={todos} setTodos={setTodos} /> */}
-      <List todos={todos} />
+      <New addTodo={addTodo} />
+      <List
+        todos={todos}
+        handleToggle={handleToggle}
+        handleDelete={handleDelete}
+        handleFilter={handleFilter}
+      />
     </div>
   );
 }

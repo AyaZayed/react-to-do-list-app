@@ -4,30 +4,33 @@ import Todo from "./Todo";
 export default function List({
   todos,
   handleToggle,
-  handleDelete,
+  handleClear,
   handleFilter,
+  handleDelete,
 }) {
-  // const filters = ["all", "active", "completed"];
-  // const [active, setActive] = React.useState("all");
-  // useEffect(() => {
-  //   handleFilter(active);
-  // }, [active, handleFilter]);
-
   return (
     <div className="list">
       <div className="todos">
         {todos.map((todo) => {
-          return <Todo handleToggle={handleToggle} todo={todo} />;
+          return (
+            <Todo
+              handleToggle={handleToggle}
+              handleDelete={handleDelete}
+              todo={todo}
+            />
+          );
         })}
       </div>
       <div className="list-bottom">
-        <span className="items-left">{todos.length} items left</span>
+        <span className="items-left">
+          {todos.filter((t) => t.complete === false).length} items left
+        </span>
         <div className="filters">
           <button onClick={() => handleFilter("all")}>All</button>
           <button onClick={() => handleFilter("active")}>Active</button>
           <button onClick={() => handleFilter("completed")}>Completed</button>
         </div>
-        <button className="clear-button" onClick={handleDelete}>
+        <button className="clear-button" onClick={handleClear}>
           Clear Completed
         </button>
       </div>

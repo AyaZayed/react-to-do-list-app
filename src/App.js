@@ -48,14 +48,14 @@ function App() {
     setTodos([...todos, newTodo]);
   }
 
-  const handleToggle = (id) => {
+  function handleToggle(id) {
     let mapped = todos.map((task) => {
       return task.id === Number(id)
         ? { ...task, complete: !task.complete }
         : { ...task };
     });
     setTodos(mapped);
-  };
+  }
 
   function handleFilter(value) {
     if (value === "active") {
@@ -73,9 +73,16 @@ function App() {
     }
   }
 
-  function handleDelete() {
+  function handleClear() {
     let filtered = todos.filter((todo) => {
       return todo.complete === false;
+    });
+    setTodos(filtered);
+  }
+
+  function handleDelete(id) {
+    let filtered = todos.filter((todo) => {
+      return todo.id !== Number(id);
     });
     setTodos(filtered);
   }
@@ -88,11 +95,12 @@ function App() {
         <List
           todos={todos}
           handleToggle={handleToggle}
-          handleDelete={handleDelete}
+          handleClear={handleClear}
           handleFilter={handleFilter}
+          handleDelete={handleDelete}
         />
       </div>
-      {/* <p>Drag and drop to reorder list</p> */}
+      <p className="bottom-p">Drag and drop to reorder list</p>
     </div>
   );
 }

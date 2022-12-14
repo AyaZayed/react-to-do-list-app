@@ -56,6 +56,7 @@
   align-items: center;
   justify-content: space-between;
   color: #fff;
+  height: fit-content;
 }
 
 .todolist,
@@ -75,7 +76,7 @@
   padding: 0 1rem;
   background-color: #fff;
   border-radius: 10px;
-  margin-bottom: 1rem;
+  margin: 2rem 0 1rem 0;
 }
 
 .todolist .todo-form button,
@@ -103,12 +104,15 @@
 .todolist .list {
   background-color: #fff;
   border-radius: 10px;
-  box-shadow: 0 0 13px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 0 5px 20px 1px rgba(0, 0, 0, 0.1);
 }
 
 .todolist .todos .todo {
   border-bottom: 1px solid var(--Very-Light-Grayish-Blue);
   padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .todolist .todos .todo .check-button {
@@ -122,6 +126,14 @@
 
 .todolist .todos .todo .completed {
   text-decoration: line-through;
+}
+
+.todolist .todos .todo .delete-button {
+  background: none;
+  border: none;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
 }
 
 .todolist .list-bottom {
@@ -141,4 +153,10 @@
 
 .todolist .list-bottom .items-left {
   font-size: 0.9rem;
+}
+
+.App .bottom-p {
+  position: absolute;
+  top: 700px;
+  left: 40%;
 }

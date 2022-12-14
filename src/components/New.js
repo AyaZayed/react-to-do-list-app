@@ -1,4 +1,5 @@
 import React from "react";
+import checkmark from "../images/icon-check.svg";
 
 export default function New({ addTodo }) {
   const [inputTodo, setInputTodo] = React.useState("");
@@ -14,8 +15,16 @@ export default function New({ addTodo }) {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input type="text" value={inputTodo} onChange={handleChange} />
+    <form className="todo-form" onSubmit={handleSubmit}>
+      <button type="submit">
+        <img src={checkmark} alt="checkmark" />
+      </button>
+      <input
+        type="text"
+        value={inputTodo}
+        onChange={handleChange}
+        placeholder="Create a new todo..."
+      />
     </form>
   );
 }

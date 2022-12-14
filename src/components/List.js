@@ -14,20 +14,22 @@ export default function List({
   // }, [active, handleFilter]);
 
   return (
-    <div>
-      <div className="todos-list">
+    <div className="list">
+      <div className="todos">
         {todos.map((todo) => {
           return <Todo handleToggle={handleToggle} todo={todo} />;
         })}
       </div>
       <div className="list-bottom">
-        <span>{todos.length} items left</span>
+        <span className="items-left">{todos.length} items left</span>
         <div className="filters">
           <button onClick={() => handleFilter("all")}>All</button>
           <button onClick={() => handleFilter("active")}>Active</button>
           <button onClick={() => handleFilter("completed")}>Completed</button>
         </div>
-        <button onClick={handleDelete}>Clear Completed</button>
+        <button className="clear-button" onClick={handleDelete}>
+          Clear Completed
+        </button>
       </div>
     </div>
   );

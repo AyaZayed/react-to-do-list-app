@@ -35,26 +35,6 @@ function App() {
       task: "Go to Store",
       complete: true,
     },
-    {
-      id: 7,
-      task: "Fill gas tank",
-      complete: true,
-    },
-    {
-      id: 8,
-      task: "Change linens",
-      complete: false,
-    },
-    {
-      id: 9,
-      task: "Rake leaves",
-      complete: true,
-    },
-    {
-      id: 10,
-      task: "Bake Cookies",
-      complete: false,
-    },
   ];
 
   const [todos, setTodos] = useState(initialTodos);
@@ -103,13 +83,16 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <New addTodo={addTodo} />
-      <List
-        todos={todos}
-        handleToggle={handleToggle}
-        handleDelete={handleDelete}
-        handleFilter={handleFilter}
-      />
+      <div className="todolist">
+        <New addTodo={addTodo} />
+        <List
+          todos={todos}
+          handleToggle={handleToggle}
+          handleDelete={handleDelete}
+          handleFilter={handleFilter}
+        />
+      </div>
+      {/* <p>Drag and drop to reorder list</p> */}
     </div>
   );
 }

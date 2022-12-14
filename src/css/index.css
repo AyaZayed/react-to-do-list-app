@@ -1,0 +1,144 @@
+:root {
+  --Bright-Blue: hsl(220, 98%, 61%);
+  --Check-Background: linear-gradient(
+    to right,
+    hsl(192, 100%, 67%),
+    hsl(280, 87%, 65%)
+  );
+  /* light theme */
+  --Very-Light-Gray: hsl(0, 0%, 98%);
+  --Very-Light-Grayish-Blue: hsl(236, 33%, 92%);
+  --Light-Grayish-Blue: hsl(233, 11%, 84%);
+  --Dark-Grayish-Blue: hsl(236, 9%, 61%);
+  --Very-Dark-Grayish-Blue: hsl(235, 19%, 35%);
+  /* dark theme */
+  --Very-Dark-Blue: hsl(235, 21%, 11%);
+  --Very-Dark-Desaturated-Blue: hsl(235, 24%, 19%);
+  --Light-Grayish-Blue: hsl(234, 39%, 85%);
+  --Light-Grayish-Blue-hover: hsl(236, 33%, 92%);
+  --Dark-Grayish-Blue: hsl(234, 11%, 52%);
+  --Very-Dark-Grayish-Blue: hsl(233, 14%, 35%);
+  --Very-Dark-Grayish-Blue: hsl(237, 14%, 26%);
+  --grey: hsl(260, 12%, 95%);
+}
+
+.App {
+  font-family: "Josefin Sans", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  font-size: 18px;
+  overflow: auto;
+}
+
+.header {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: url(../images/bg-desktop-light.jpg) no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  z-index: -1;
+  padding: 6rem 0;
+  position: absolute;
+  top: 0;
+  overflow: hidden;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #fff;
+}
+
+.todolist,
+.header-content {
+  width: 100%;
+  max-width: 500px;
+}
+
+.todolist {
+  position: absolute;
+  top: 30%;
+}
+
+.todolist .todo-form {
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+  background-color: #fff;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+.todolist .todo-form button,
+.todo .check-button {
+  border: 1px solid var(--Very-Light-Grayish-Blue);
+  border-radius: 100%;
+  background: none;
+}
+
+.todolist .todo-form button img,
+.todo .check-button img {
+  margin-top: 0.4rem;
+}
+
+.todolist .todo-form input {
+  width: 100%;
+  padding: 1rem;
+  border: none;
+}
+
+.todolist .todo-form input:focus {
+  outline: none;
+}
+
+.todolist .list {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 13px 0 rgba(0, 0, 0, 0.1);
+}
+
+.todolist .todos .todo {
+  border-bottom: 1px solid var(--Very-Light-Grayish-Blue);
+  padding: 1rem;
+}
+
+.todolist .todos .todo .check-button {
+  margin-right: 1rem;
+}
+
+.todolist .todos .todo .check-button-completed {
+  background: var(--Check-Background);
+  border: none;
+}
+
+.todolist .todos .todo .completed {
+  text-decoration: line-through;
+}
+
+.todolist .list-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.todolist .list-bottom button {
+  background: none;
+  border: none;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.todolist .list-bottom .items-left {
+  font-size: 0.9rem;
+}

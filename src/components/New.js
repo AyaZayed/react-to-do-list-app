@@ -16,7 +16,7 @@ export default function New({ addTodo }) {
 
   return (
     <form className="todo-form" onSubmit={handleSubmit}>
-      <button type="submit">
+      <button type="submit" className="check-button">
         <img src={checkmark} alt="checkmark" />
       </button>
       <input

@@ -2,6 +2,7 @@ import { useState } from "react";
 import Header from "./components/Header";
 import List from "./components/List";
 import New from "./components/New";
+// import useLocalStorage from "use-local-storage";
 
 function App() {
   const initialTodos = [
@@ -38,6 +39,11 @@ function App() {
   ];
 
   const [todos, setTodos] = useState(initialTodos);
+
+  // const defaultDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  // const [theme, setTheme] = useLocalStorage('theme', defaultDark ? 'dark' : 'light');
+
+  const [theme, setTheme] = useState('dark');
 
   function addTodo(inputTodo) {
     const newTodo = {
@@ -87,9 +93,13 @@ function App() {
     setTodos(filtered);
   }
 
+  function toggleTheme() {
+    setTheme(theme === 'light' ? 'dark' : 'light');
+  }
+
   return (
-    <div className="App">
-      <Header />
+    <div className="App" data-theme={theme}>
+      <Header toggleTheme={toggleTheme} theme={theme} />
       <div className="todolist">
         <New addTodo={addTodo} />
         <List

@@ -5,21 +5,28 @@
     hsl(192, 100%, 67%),
     hsl(280, 87%, 65%)
   );
+}
+
+[data-theme="light"] {
   /* light theme */
-  --Very-Light-Gray: hsl(0, 0%, 98%);
-  --Very-Light-Grayish-Blue: hsl(236, 33%, 92%);
+  --background: hsl(0deg 0% 98%);
+  --content-background: hsl(0deg 0% 100%);
   --Light-Grayish-Blue: hsl(233, 11%, 84%);
   --Dark-Grayish-Blue: hsl(236, 9%, 61%);
-  --Very-Dark-Grayish-Blue: hsl(235, 19%, 35%);
+  --Very-Dark-Grayish-Blue: rgb(236, 235, 240);
+  --text-color: hsl(235, 19%, 35%);
+}
+
+[data-theme="dark"] {
   /* dark theme */
-  --Very-Dark-Blue: hsl(235, 21%, 11%);
-  --Very-Dark-Desaturated-Blue: hsl(235, 24%, 19%);
+  --background: hsl(235, 21%, 11%);
+  --content-background: hsl(235, 24%, 19%);
   --Light-Grayish-Blue: hsl(234, 39%, 85%);
   --Light-Grayish-Blue-hover: hsl(236, 33%, 92%);
   --Dark-Grayish-Blue: hsl(234, 11%, 52%);
   --Very-Dark-Grayish-Blue: hsl(233, 14%, 35%);
   --Very-Dark-Grayish-Blue: hsl(237, 14%, 26%);
-  --grey: hsl(260, 12%, 95%);
+  --text-color: hsl(260, 12%, 95%);
 }
 
 .App {
@@ -28,9 +35,12 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
   font-size: 18px;
   overflow: auto;
+  background-color: var(--background);
+  color: var(--text-color);
+  /* height: 100vh;
+  position: relative; */
 }
 
 .header {
@@ -44,19 +54,24 @@
   background-size: cover;
   background-position: center;
   width: 100%;
-  z-index: -1;
-  padding: 6rem 0;
-  position: absolute;
-  top: 0;
-  overflow: hidden;
+  height: 100%;
+  padding: 5rem 0;
+  z-index: 0;
 }
 
 .header-content {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  color: #fff;
+  color: var(--content-background);
   height: fit-content;
+  color: #fff;
+}
+
+.header-content .theme-button {
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
 .todolist,
@@ -66,35 +81,27 @@
 }
 
 .todolist {
-  position: absolute;
-  top: 30%;
+  /* position: absolute;
+  top: 30%; */
+  z-index: 1;
 }
 
 .todolist .todo-form {
   display: flex;
   align-items: center;
   padding: 0 1rem;
-  background-color: #fff;
+  background-color: var(--content-background);
   border-radius: 10px;
   margin: 2rem 0 1rem 0;
-}
-
-.todolist .todo-form button,
-.todo .check-button {
-  border: 1px solid var(--Very-Light-Grayish-Blue);
-  border-radius: 100%;
-  background: none;
-}
-
-.todolist .todo-form button img,
-.todo .check-button img {
-  margin-top: 0.4rem;
 }
 
 .todolist .todo-form input {
   width: 100%;
   padding: 1rem;
+  padding-left: 0;
   border: none;
+  background: none;
+  color: var(--Dark-Grayish-Blue);
 }
 
 .todolist .todo-form input:focus {
@@ -102,29 +109,44 @@
 }
 
 .todolist .list {
-  background-color: #fff;
+  background-color: var(--content-background);
+  color: var(--text-color);
   border-radius: 10px;
   box-shadow: 0 5px 20px 1px rgba(0, 0, 0, 0.1);
 }
 
 .todolist .todos .todo {
-  border-bottom: 1px solid var(--Very-Light-Grayish-Blue);
+  border-bottom: 1px solid var(--Very-Dark-Grayish-Blue);
   padding: 1rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.todolist .todos .todo .check-button {
+.todolist .check-button {
   margin-right: 1rem;
+  height: 1.5rem;
+  width: 1.5rem;
+  border: 1px solid var(--Dark-Grayish-Blue);
+  border-radius: 100%;
+  background: none;
 }
 
-.todolist .todos .todo .check-button-completed {
+.todolist .check-button img {
+  margin-top: 0.1rem;
+  margin-left: 0.1rem;
+  display: none;
+}
+.todolist .check-button-completed {
   background: var(--Check-Background);
   border: none;
 }
 
-.todolist .todos .todo .completed {
+.todolist .check-button-completed img {
+  display: block;
+}
+
+.todolist .completed {
   text-decoration: line-through;
 }
 
@@ -153,10 +175,15 @@
 
 .todolist .list-bottom .items-left {
   font-size: 0.9rem;
+  color: var(--Dark-Grayish-Blue);
+  font-weight: 600;
+}
+
+.todolist button {
+  color: var(--Dark-Grayish-Blue);
 }
 
 .App .bottom-p {
-  position: absolute;
-  top: 700px;
-  left: 40%;
+  margin-top: 2rem;
+  color: var(--Dark-Grayish-Blue);
 }

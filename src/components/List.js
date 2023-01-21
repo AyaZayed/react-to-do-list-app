@@ -8,6 +8,12 @@ export default function List({
   handleFilter,
   handleDelete,
 }) {
+  const [active, setActive] = React.useState("all");
+
+  function handleActive(e) {
+    setActive(e.currentTarget.value);
+    handleFilter(e.currentTarget.value);
+  }
   return (
     <div className="list">
       <div className="todos">
@@ -17,6 +23,7 @@ export default function List({
               handleToggle={handleToggle}
               handleDelete={handleDelete}
               todo={todo}
+              key={todo.id}
             />
           );
         })}
@@ -26,9 +33,9 @@ export default function List({
           {todos.filter((t) => t.complete === false).length} items left
         </span>
         <div className="filters">
-          <button onClick={() => handleFilter("all")}>All</button>
-          <button onClick={() => handleFilter("active")}>Active</button>
-          <button onClick={() => handleFilter("completed")}>Completed</button>
+          <button value='all' onClick={handleActive} className={`${active === 'all' ? 'active' : null}`}>All</button>
+          <button value='active' onClick={handleActive} className={`${active === 'active' ? 'active' : null}`}>Active</button>
+          <button value='completed' onClick={handleActive} className={`${active === 'completed' ? 'active' : null}`}>Completed</button>
         </div>
         <button className="clear-button" onClick={handleClear}>
           Clear Completed

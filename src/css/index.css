@@ -15,6 +15,7 @@
   --Dark-Grayish-Blue: hsl(236, 9%, 61%);
   --Very-Dark-Grayish-Blue: rgb(236, 235, 240);
   --text-color: hsl(235, 19%, 35%);
+  --background-image: url("../images/bg-desktop-light.jpg");
 }
 
 [data-theme="dark"] {
@@ -27,6 +28,7 @@
   --Very-Dark-Grayish-Blue: hsl(233, 14%, 35%);
   --Very-Dark-Grayish-Blue: hsl(237, 14%, 26%);
   --text-color: hsl(260, 12%, 95%);
+  --background-image: url("../images/bg-desktop-dark.jpg");
 }
 
 .App {
@@ -37,10 +39,12 @@
   justify-content: center;
   font-size: 18px;
   overflow: auto;
-  background-color: var(--background);
   color: var(--text-color);
-  /* height: 100vh;
-  position: relative; */
+  height: 100vh;
+  background: var(--background-image);
+  background-repeat: no-repeat;
+  background-color: var(--background);
+  position: relative;
 }
 
 .header {
@@ -50,13 +54,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: url(../images/bg-desktop-light.jpg) no-repeat;
-  background-size: cover;
-  background-position: center;
   width: 100%;
   height: 100%;
-  padding: 5rem 0;
   z-index: 0;
+  position: absolute;
+  top: -180px;
 }
 
 .header-content {
@@ -81,9 +83,10 @@
 }
 
 .todolist {
-  /* position: absolute;
-  top: 30%; */
   z-index: 1;
+  position: absolute;
+  top: 29%;
+  margin-bottom: 100px;
 }
 
 .todolist .todo-form {
@@ -92,7 +95,7 @@
   padding: 0 1rem;
   background-color: var(--content-background);
   border-radius: 10px;
-  margin: 2rem 0 1rem 0;
+  margin: 0 0 1rem 0;
 }
 
 .todolist .todo-form input {
@@ -102,6 +105,7 @@
   border: none;
   background: none;
   color: var(--Dark-Grayish-Blue);
+  caret-color: var(--Bright-Blue);
 }
 
 .todolist .todo-form input:focus {
@@ -121,6 +125,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  cursor: pointer;
 }
 
 .todolist .check-button {
@@ -130,6 +135,7 @@
   border: 1px solid var(--Dark-Grayish-Blue);
   border-radius: 100%;
   background: none;
+  cursor: pointer;
 }
 
 .todolist .check-button img {
@@ -137,6 +143,7 @@
   margin-left: 0.1rem;
   display: none;
 }
+
 .todolist .check-button-completed {
   background: var(--Check-Background);
   border: none;
@@ -148,6 +155,19 @@
 
 .todolist .completed {
   text-decoration: line-through;
+  color: var(--Dark-Grayish-Blue);
+}
+
+.todolist .todos .todo .todo-content {
+  display: flex;
+  align-items: center;
+}
+
+.todolist .todos .todo .todo-content p {
+  margin: 0;
+  padding: 0;
+  font-size: 1rem;
+  word-break: break-all;
 }
 
 .todolist .todos .todo .delete-button {
@@ -173,6 +193,14 @@
   cursor: pointer;
 }
 
+.todolist .list-bottom button.active {
+  color: var(--Bright-Blue);
+}
+
+.todolist .list-bottom button:hover {
+  color: var(--text-color);
+}
+
 .todolist .list-bottom .items-left {
   font-size: 0.9rem;
   color: var(--Dark-Grayish-Blue);
@@ -183,7 +211,9 @@
   color: var(--Dark-Grayish-Blue);
 }
 
-.App .bottom-p {
-  margin-top: 2rem;
+.App .bottom {
   color: var(--Dark-Grayish-Blue);
+  position: absolute;
+  bottom: -100px;
+  left: 24%;
 }

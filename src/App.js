@@ -109,8 +109,10 @@ function App() {
           handleFilter={handleFilter}
           handleDelete={handleDelete}
         />
+        <div className="bottom">
+          <p className="p">Drag and drop to reorder list</p>
+        </div>
       </div>
-      <p className="bottom-p">Drag and drop to reorder list</p>
     </div>
   );
 }

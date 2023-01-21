@@ -14,21 +14,22 @@ export default function Todo({ todo, handleToggle, handleDelete }) {
   }
 
   return (
-    <div key={todo.id} className="todo">
-      <div>
+    <div className="todo">
+      <div
+        onClick={handleTodoClick}
+        id={todo.id}
+        value={todo.id}
+        name={todo.task}
+        className="todo-content"
+      >
         <button
-          onClick={handleTodoClick}
-          id={todo.id}
-          value={todo.id}
-          name={todo.task}
-          className={`check-button ${
-            todo.complete ? "check-button-completed" : "null"
-          }`}>
+          className={`check-button ${todo.complete ? "check-button-completed" : "null"
+            }`}>
           <img src={checkmark} alt="checkmark" />
         </button>
-        <span className={`${todo.complete ? "completed" : null}`}>
+        <p className={`${todo.complete ? "completed" : null}`}>
           {todo.task}
-        </span>
+        </p>
       </div>
       <button
         className="delete-button"
